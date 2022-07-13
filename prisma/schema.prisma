@@ -28,6 +28,8 @@ model Product {
   image String
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
+  category Categorie @relation(fields: [categoryId], references: [id])
+  categoryId String @map("categorie_id")
   @@map("product")
 }
 
@@ -37,4 +39,11 @@ model Table {
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
   @@map("table")
+}
+
+model Categorie {
+  id String @id @default(uuid())
+  name String @unique
+  products Product[]
+  @@map("categorie")
 }
