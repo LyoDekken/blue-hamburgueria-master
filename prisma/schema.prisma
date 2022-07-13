@@ -17,6 +17,7 @@ model User {
   password String
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
+
   @@map("user")
 }
 
@@ -28,8 +29,10 @@ model Product {
   image String
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
-  category Categorie @relation(fields: [categoryId], references: [id])
-  categoryId String @map("categorie_id")
+
+  category Category @relation(fields: [categoryId], references: [id])
+  categoryId String @map("category_id")
+
   @@map("product")
 }
 
@@ -38,12 +41,15 @@ model Table {
   number Int @unique
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
+
   @@map("table")
 }
 
-model Categorie {
+model Category {
   id String @id @default(uuid())
   name String @unique
+
   products Product[]
-  @@map("categorie")
+
+  @@map("category")
 }
