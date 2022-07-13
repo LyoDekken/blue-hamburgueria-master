@@ -19,7 +19,7 @@ export class CategoriesService {
     return this.prisma.categorie.findMany();
   }
 
-  async verifyIdAndReturnCategory(id: string): Promise<Categorie> {
+  async verifyIdAndReturnCategorie(id: string): Promise<Categorie> {
     const categorie: Categorie = await this.prisma.categorie.findUnique({
       where: { id },
     });
@@ -32,11 +32,11 @@ export class CategoriesService {
   }
 
   findOne(id: string): Promise<Categorie> {
-    return this.verifyIdAndReturnCategory(id);
+    return this.verifyIdAndReturnCategorie(id);
   }
 
   async update(id: string, dto: UpdateCategorieDto): Promise<Categorie> {
-    await this.verifyIdAndReturnCategory(id);
+    await this.verifyIdAndReturnCategorie(id);
 
     return this.prisma.categorie
       .update({ where: { id }, data: dto })
@@ -44,7 +44,7 @@ export class CategoriesService {
   }
 
   async remove(id: string) {
-    await this.verifyIdAndReturnCategory(id);
+    await this.verifyIdAndReturnCategorie(id);
 
     return this.prisma.categorie.delete({
       where: { id },
