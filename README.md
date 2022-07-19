@@ -2,8 +2,11 @@
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
 </p>
 
+<br>
+<br>
+
 <p align="center">
-  <img src="https://www.campograndenews.com.br/lado-b/sabor/hamburgueria-serve-ps1-nintendo-e-fliperama-enquanto-lanche-nao-vem" width="200" alt="Pizza Fresh Logo" />
+  <img src="https://imgs.casasbahia.com.br/1516712405/1xg.jpg?imwidth=500" width="200" alt="Pizza Fresh Logo" />
 </p>
 
 [circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
