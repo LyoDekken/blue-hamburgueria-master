@@ -5,10 +5,6 @@
 <br>
 <br>
 
-<p align="center">
-  <img src="https://a-static.mlcdn.com.br/800x560/papel-de-parede-hamburgueria-hamburguer-lanchonete-vinil-seller-mix/mixshow/7306684855/5f92c03a0187ea631b9c96dd7833b01a.jpg" width="200" alt="Pizza Fresh Logo" />
-</p>
-
 [circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
 [circleci-url]: https://circleci.com/gh/nestjs/nest
 
@@ -31,7 +27,11 @@
 
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+[Nest](https://github.com/nestjs/nest) framework em TypeScript. Uma API de hamburgueria
+
+<p align="center">
+  <img src="https://a-static.mlcdn.com.br/800x560/papel-de-parede-hamburgueria-hamburguer-lanchonete-vinil-seller-mix/mixshow/7306684855/5f92c03a0187ea631b9c96dd7833b01a.jpg" width="200" alt="Pizza Fresh Logo" />
+</p>
 
 ## Installation
 
