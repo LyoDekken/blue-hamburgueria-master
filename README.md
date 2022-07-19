@@ -6,7 +6,7 @@
 <br>
 
 <p align="center">
-  <img src="https://imgs.casasbahia.com.br/1516712405/1xg.jpg?imwidth=500" width="200" alt="Pizza Fresh Logo" />
+  <img src="https://a-static.mlcdn.com.br/800x560/papel-de-parede-hamburgueria-hamburguer-lanchonete-vinil-seller-mix/mixshow/7306684855/5f92c03a0187ea631b9c96dd7833b01a.jpg" width="200" alt="Pizza Fresh Logo" />
 </p>
 
 [circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
