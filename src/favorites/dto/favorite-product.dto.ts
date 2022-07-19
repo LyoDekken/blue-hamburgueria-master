@@ -5,15 +5,15 @@ export class FavoriteProductDto {
   @IsUUID()
   @ApiProperty({
     description: 'Id do usuário que está favoritando o produto',
-    example: '4d0440d1-2abc-4e7d-a080-5e21e09a7b3a',
+    example: 'f11b0958-efa2-4b4f-9b84-36633e5529b8',
   })
   userId: string;
 
   @IsString()
   @IsNotEmpty()
   @ApiProperty({
-    description: 'Nome do produto a ser favoritado',
-    example: 'Hamburguer Salada',
+    description: 'Nome do produto que está sendo favoritado',
+    example: 'hamburguer Salada',
   })
   productName: string;
 }
