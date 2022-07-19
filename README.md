@@ -28,7 +28,7 @@
 ## Description
 
 <p align="center">
-Nest(https://github.com/nestjs/nest) framework em TypeScript. Uma API de hamburgueria
+ Framework Nest com TypeScript. Sendo usado par criar uma API de hamburgueria
 </p>
   
 <p align="center">
