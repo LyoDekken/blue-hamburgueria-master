@@ -28,7 +28,7 @@
 ## Description
 
 <p align="center">
- Framework Nest com TypeScript. Sendo usado par criar uma API de hamburgueria
+ Framework Nest com TypeScript. Sendo usado para criar uma API de hamburgueria
 </p>
   
 <p align="center">
