@@ -2,12 +2,8 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { handleErrorConstraintUnique } from 'src/utils/handle-error-unique.util';
 import { CreateProductDto } from './dto/create-product.dto';
-import { FavoriteProductDto } from '../favorites/dto/favorite-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
 import { Product } from './entities/product.entity';
-import { Favorite } from 'src/favorites/entities/favorite.entity';
-import { User } from 'src/users/entity/users.entity';
-import { Prisma } from '@prisma/client';
 
 @Injectable()
 export class ProductsService {
@@ -39,18 +35,6 @@ export class ProductsService {
     return this.verifyIdAndReturnProduct(id);
   }
 
-  async findUsersLiked(id: string) {
-    const product: Product = await this.verifyIdAndReturnProduct(id);
-
-    return this.prisma.favorite.findMany({
-      where: { productName: product.name },
-      select: {
-        productName: true,
-        user: { select: { id: true, email: true } },
-      },
-    });
-  }
-
   async update(id: string, dto: UpdateProductDto): Promise<Product | void> {
     await this.verifyIdAndReturnProduct(id);
 
@@ -63,48 +47,5 @@ export class ProductsService {
     await this.verifyIdAndReturnProduct(id);
 
     return this.prisma.product.delete({ where: { id } });
-  }
-
-  async favorite(dto: FavoriteProductDto): Promise<Favorite> {
-    const product: Product = await this.prisma.product.findUnique({
-      where: { name: dto.productName },
-    });
-
-    if (!product) {
-      throw new NotFoundException(
-        `Produto de nome '${dto.productName}' não encontrado`,
-      );
-    }
-
-    const user: User = await this.prisma.user.findUnique({
-      where: { id: dto.userId },
-    });
-
-    if (!user) {
-      throw new NotFoundException(
-        `Entrada de id '${dto.userId}' não encontrada`,
-      );
-    }
-
-    const data: Prisma.FavoriteCreateInput = {
-      user: {
-        connect: {
-          id: dto.userId,
-        },
-      },
-      product: {
-        connect: {
-          name: dto.productName,
-        },
-      },
-    };
-
-    return this.prisma.favorite.create({ data });
-  }
-
-  async unfav(id: string) {
-    await this.verifyIdAndReturnProduct(id);
-
-    return this.prisma.favorite.delete({ where: { id } });
   }
 }

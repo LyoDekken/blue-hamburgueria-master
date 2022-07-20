@@ -6,16 +6,18 @@ import {
   Patch,
   Param,
   Delete,
+  UseGuards,
 } from '@nestjs/common';
 import { ProductsService } from './products.service';
 import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
-import { ApiOperation, ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { Product } from './entities/product.entity';
-import { FavoriteProductDto } from '../favorites/dto/favorite-product.dto';
-import { Favorite } from 'src/favorites/entities/favorite.entity';
+import { AuthGuard } from '@nestjs/passport';
 
+@UseGuards(AuthGuard())
 @ApiTags('products')
+@ApiBearerAuth()
 @Controller('products')
 export class ProductsController {
   constructor(private readonly productsService: ProductsService) {}
@@ -44,14 +46,6 @@ export class ProductsController {
     return this.productsService.findOne(id);
   }
 
-  @Get(':id/users-liked')
-  @ApiOperation({
-    summary: 'Lista de usuários que tem o produto do id enviado como favorito',
-  })
-  findUsersLiked(@Param('id') id: string) {
-    return this.productsService.findUsersLiked(id);
-  }
-
   @Patch(':id')
   @ApiOperation({
     summary: 'Atualização de um produto',
@@ -66,21 +60,5 @@ export class ProductsController {
   })
   remove(@Param('id') id: string) {
     return this.productsService.remove(id);
-  }
-
-  @Post('favorite')
-  @ApiOperation({
-    summary: 'Favoritar produto',
-  })
-  favorite(@Body() dto: FavoriteProductDto): Promise<Favorite> {
-    return this.productsService.favorite(dto);
-  }
-
-  @Delete('favorite/:id')
-  @ApiOperation({
-    summary: 'Desfavoritar produto',
-  })
-  unfav(@Param('id') id: string) {
-    return this.productsService.unfav(id);
   }
 }
